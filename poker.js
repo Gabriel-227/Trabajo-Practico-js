@@ -33,56 +33,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function jugarNuevaMano() {
-        const resultado = jugarPoker(nombreJugador);
+        const resultado = jugarPoker(nombreJugador); 
         contenedorResultados.innerHTML = resultado.mensaje;
-        console.log(resultado.registro);
+        console.log(resultado.registro);  
     }
 
-    function jugarPoker(nombreJugador) {
-        const mazo = crearMazo();
+    function jugarPoker(nombreJugador) { 
+        const mazo = crearMazo(); 
         const manoJugador = repartirMano(mazo);
-        const manoComputadora = repartirMano(mazo);
+        const manoComputadora = repartirMano(mazo); 
 
-        const evaluacionJugador = evaluarMano(manoJugador);
-        const evaluacionComputadora = evaluarMano(manoComputadora);
+        const evaluacionJugador = evaluarMano(manoJugador); 
+        const evaluacionComputadora = evaluarMano(manoComputadora); 
 
-        const ganador = determinarGanador(evaluacionJugador, evaluacionComputadora);
+        const ganador = determinarGanador(evaluacionJugador, evaluacionComputadora); 
 
         let mensaje = `<div class="carta-container">${nombreJugador}: ${manoAHtml(manoJugador)} (${evaluacionJugador.rango})</div>`;
         mensaje += `<div class="carta-container">Computadora: ${manoAHtml(manoComputadora)} (${evaluacionComputadora.rango})</div>`;
-        mensaje += `<p>Ganador: ${ganador}</p>`;
+        mensaje += `<p>Ganador: ${ganador}</p>`; 
 
         const registro = {
-            manoJugador: manoAString(manoJugador),
-            manoComputadora: manoAString(manoComputadora),
+            manoJugador: manoAString(manoJugador), 
+            manoComputadora: manoAString(manoComputadora),  
             evaluacionJugador: evaluacionJugador.rango,
-            evaluacionComputadora: evaluacionComputadora.rango,
-            ganador: ganador
+            evaluacionComputadora: evaluacionComputadora.rango, 
+            ganador: ganador  
         };
-
+ 
         return { mensaje, registro };
-    }
-
+    } 
+ 
     function crearMazo() {
-        const palos = ['Corazones', 'Tréboles', 'Picas', 'Diamantes'];
+        const palos = ['Corazones', 'Tréboles', 'Picas', 'Diamantes']; 
         const valores = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-        const mazo = [];
+        const mazo = [];   
         for (const palo of palos) {
             for (const valor of valores) {
                 mazo.push({ palo, valor });
             }
         }
         return mazo.sort(() => Math.random() - 0.5);
-    }
+    } 
 
     function repartirMano(mazo) {
-        return mazo.splice(0, 5);
+        return mazo.splice(0, 5); 
     }
 
     function evaluarMano(mano) {
         // rangos
         const rangos = ['Carta más alta', 'Un par', 'Dos pares', 'Trío', 'Escalera', 'Color', 'Full', 'Póker', 'Escalera de color', 'Escalera real'];
-        return { rango: rangos[Math.floor(Math.random() * rangos.length)] };
+        return { rango: rangos[Math.floor(Math.random() * rangos.length)] }; 
     }
 
     function determinarGanador(evaluacionJugador, evaluacionComputadora) {
