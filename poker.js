@@ -11,9 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (confirm("¿Quieres jugar?")) {
             nombreJugador = prompt("¿Cuál es tu nombre?", "Jugador");
             if (nombreJugador) {
-                // Muestra el contenedor de acciones
                 contenedorAcciones.style.display = 'flex';
-                botonJugar.style.display = 'none'; // Oculta el botón de inicio
+                botonJugar.style.display = 'none';
                 jugarNuevaMano();
             }
         } else {
@@ -24,8 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     botonTerminar.addEventListener('click', () => {
         if (confirm("¿Estás seguro que deseas abandonar la partida?")) {
             contenedorResultados.innerHTML = "¡Gracias por jugar!";
-            contenedorAcciones.style.display = 'none'; // Oculta el contenedor de acciones
-            botonJugar.style.display = 'block'; // Muestra el botón de inicio
+            contenedorAcciones.style.display = 'none'; 
+            botonJugar.style.display = 'block'; 
         }
     });
 
@@ -81,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function evaluarMano(mano) {
-        // Implementa la lógica de evaluación aquí
+        // rangos
         const rangos = ['Carta más alta', 'Un par', 'Dos pares', 'Trío', 'Escalera', 'Color', 'Full', 'Póker', 'Escalera de color', 'Escalera real'];
         return { rango: rangos[Math.floor(Math.random() * rangos.length)] };
     }
